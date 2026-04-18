@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "swc src -d dist -s true --strip-leading-paths && tsc --emitDeclarationOnly",
+    "build:bundle": "npm run build && rollup -c",
     "prepare": "swc src -d dist --strip-leading-paths && tsc --emitDeclarationOnly",
     "test:node": "./test/run-testsuite.sh node",
     "test:browser": "playwright install --with-deps --no-shell chromium && exec ./test/run-testsuite.sh browser",
@@ -32,6 +33,9 @@
   "typings": "./typings/index.d.ts",
   "homepage": "https://github.com/bjorn3/browser_wasi_shim#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
     "@swc/cli": "^0.7.8",
     "@swc/core": "^1.13.5",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
@@ -39,6 +43,7 @@
     "eslint": "^9.38.0",
     "playwright": "^1.56.1",
     "prettier": "^3.6.2",
+    "rollup": "^4.60.2",
     "typescript": "^5.9.3"
   }
 }
